@@ -42,6 +42,7 @@ export const translations = {
         basic: {
           title: "Basic",
           price: "Free",
+          period: "/lifetime",
           description: "Perfect for getting started",
           features: [
             "Basic pond monitoring",
@@ -52,7 +53,7 @@ export const translations = {
         },
         pro: {
           title: "Plus",
-          price: "₹999",
+          price: "Enquire our team to subscribe",
           period: "/month",
           description: "Dedicated hardware for your pond for the best service",
           features: [

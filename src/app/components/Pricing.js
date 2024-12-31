@@ -1,5 +1,6 @@
 // src/app/components/Pricing.js
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Pricing({ translations }) {
   return (
@@ -52,12 +53,12 @@ export default function Pricing({ translations }) {
               <p className="mt-4 text-sm text-gray-500">
                 {translations.pro.description}
               </p>
-              <p className="mt-8">
+              {/*}<p className="mt-8">
                 <span className="text-4xl font-bold text-gray-900">
                   {translations.pro.price}
                 </span>
                 <span className="text-gray-500">{translations.pro.period}</span>
-              </p>
+              </p>{*/}
               <ul className="mt-8 space-y-4">
                 {translations.pro.features.map((feature, index) => (
                   <li key={index} className="flex items-center">
@@ -66,9 +67,11 @@ export default function Pricing({ translations }) {
                   </li>
                 ))}
               </ul>
+              <Link href="/upgrade_enq">
               <button className="mt-8 w-full bg-teal-600 text-white py-3 px-4 rounded-lg hover:bg-teal-700 transition-colors">
-                Upgrade plan
+                Contact team
               </button>
+              </Link>
             </div>
           </div>
         </div>
