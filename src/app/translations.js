@@ -68,9 +68,9 @@ export const translations = {
       news: {
         title: "Latest Updates",
         items: [
-          "📱 Android version launching soon!",
-          "🌟 New disease prediction models added",
-          "🤝 Growing community of 1000+ farmers",
+          "📱 Android app launching soon!",
+          "🌟 The website is redesigned to serve better",
+          "🤝 Social networking is in development",
           "📊 Enhanced analytics dashboard coming soon",
           "🌾 Partnership with local agriculture boards"
         ]

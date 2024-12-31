@@ -2276,6 +2276,11 @@ react-dom@^19.0.0:
   dependencies:
     scheduler "^0.25.0"
 
+react-fast-marquee@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/react-fast-marquee/-/react-fast-marquee-1.6.5.tgz#98929ae93eef087a607a71e9d45ab76bba97dc16"
+  integrity sha512-swDnPqrT2XISAih0o74zQVE2wQJFMvkx+9VZXYYNSLb/CUcAzU9pNj637Ar2+hyRw6b4tP6xh4GQZip2ZCpQpg==
+
 react-i18next@^15.3.0:
   version "15.3.0"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-15.3.0.tgz#0dd4e84865460f3b4ccd086715360b5a3eaaa49f"

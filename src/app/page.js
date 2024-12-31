@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
 import Pricing from './components/Pricing'
+import NewsTicker from './components/NewsTicker'
 import { translations } from './translations'
 import Script from 'next/script'
 import Footer from './components/Footer'
@@ -27,6 +28,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-teal-50 to-blue-50">
       <Navbar language={language} setLanguage={setLanguage} />
+      <NewsTicker translations={t.news} />
       <Hero translations={t.hero} />
       <Features translations={t.features} />
       <Pricing translations={t.pricing} />

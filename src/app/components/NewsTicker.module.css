@@ -1,0 +1,24 @@
+/* src/app/components/NewsTicker.module.css */
+
+.newsTickerWrapper {
+    margin-top: 80px; /* Adjust this value for positioning */
+  }
+  
+  .newsTickerContainer {
+    display: flex;
+    width: 100%;
+  }
+  
+  .newsTicker {
+    display: flex;
+    animation: scrollNews linear infinite;
+  }
+  
+  @keyframes scrollNews {
+    0% {
+      transform: translateX(0); /* Start at the beginning */
+    }
+    100% {
+      transform: translateX(-100%); /* Scroll to the left */
+    }
+  }  
