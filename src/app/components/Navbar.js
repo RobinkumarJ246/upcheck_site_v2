@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { Menu, X, Globe, Fish } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Navbar({ language, setLanguage }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -18,10 +19,10 @@ export default function Navbar({ language, setLanguage }) {
   ]
 
   const navigation = [
-    { name: 'About', href: '#about' },
-    { name: 'Resources', href: '#resources' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Join us', href: '#careers' }
+    { name: 'About', href: 'about' },
+    { name: 'Resources', href: 'resources' },
+    { name: 'Contact', href: '/#contact' },
+    { name: 'Join us', href: 'https://docs.google.com/forms/d/e/1FAIpQLSdwyNgXZwNwmockt0Czo3N7XQ-vKgXKJj9Nr26HOz53i48yMQ/viewform?usp=dialog' }
   ]
 
   // Close language menu when clicking outside
@@ -55,6 +56,7 @@ export default function Navbar({ language, setLanguage }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
         {/* Logo and Brand */}
+<Link href="/">
 <div className="flex items-center space-x-3">
   <div className="bg-gradient-to-r from-teal-50 to-blue-50 p-2 rounded-full">
     <img
@@ -67,6 +69,7 @@ export default function Navbar({ language, setLanguage }) {
     Upcheck
   </span>
 </div>
+</Link>
 
 
   
