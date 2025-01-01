@@ -101,7 +101,7 @@ export default function AboutPage() {
               { name: "Lathikaa Shri S", role: "Core member", desc: "Expert in AI and IoT solutions for agriculture.", img: "https://avatar.iran.liara.run/public/56" },
               { name: "Magesh S", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "https://avatar.iran.liara.run/public/9" },
               { name: "Nithish Kumar B", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "https://avatar.iran.liara.run/public/9" },
-              { name: "Robinkumar J", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "robin.png" },
+              { name: "Robinkumar J", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "https://avatar.iran.liara.run/public/42" },
             ].map((member, idx) => (
               <div key={idx} className="bg-white p-6 rounded-lg shadow-md">
                 <img
