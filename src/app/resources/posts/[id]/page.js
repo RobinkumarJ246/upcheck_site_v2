@@ -50,7 +50,7 @@ const ReadingProgress = () => {
 // Social Share Component
 const SocialShare = ({ url, title }) => {
   const shareUrls = {
-    twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
+    x: `https://x.com/intent/tweet?url=${url}&text=${title}`,
     linkedin: `https://www.linkedin.com/shareArticle?url=${url}&title=${title}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`
   };
@@ -62,7 +62,7 @@ const SocialShare = ({ url, title }) => {
   return (
     <div className="flex gap-4">
       <button 
-        onClick={() => handleShare('twitter')}
+        onClick={() => handleShare('x')}
         className="p-2 rounded-full hover:bg-gray-100 transition-colors"
         aria-label="Share on Twitter"
       >
@@ -222,7 +222,7 @@ export default function PostPage({ params }) {
           {/* Share Section */}
           <div className="mt-8 pt-8 border-t border-gray-200">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-              <h3 className="text-lg font-semibold text-gray-900">Share this article</h3>
+              <h3 className="text-lg font-semibold text-gray-900">Share this post</h3>
               <div className="flex flex-wrap gap-4 items-center">
                 <SocialShare url={currentUrl} title={postData.title} />
                 <button
