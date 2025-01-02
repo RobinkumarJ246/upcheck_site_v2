@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/react": "^2.11.0",
+    "@tiptap/starter-kit": "^2.11.0",
     "i18next": "^24.2.0",
     "lucide-react": "^0.469.0",
     "next": "15.1.3",

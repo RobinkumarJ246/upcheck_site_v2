@@ -97,11 +97,11 @@ export default function AboutPage() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6">Our Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: "Kiran Sekar S", role: "Core member", desc: "Passionate about sustainable farming and empowering communities.", img: "kiran_sekar.jpg" },
+              { name: "Kiran Sekar S", role: "Core member", desc: "Passionate about sustainable farming and empowering communities.", img: "https://avatar.iran.liara.run/public/35" },
               { name: "Lathikaa Shri S", role: "Core member", desc: "Expert in AI and IoT solutions for agriculture.", img: "https://avatar.iran.liara.run/public/56" },
               { name: "Magesh S", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "https://avatar.iran.liara.run/public/9" },
               { name: "Nithish Kumar B", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "https://avatar.iran.liara.run/public/9" },
-              { name: "Robinkumar J", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "https://avatar.iran.liara.run/public/42" },
+              { name: "Robinkumar J", role: "Core member", desc: "Focused on delivering value to farmers and stakeholders.", img: "https://avatar.iran.liara.run/public/13" },
             ].map((member, idx) => (
               <div key={idx} className="bg-white p-6 rounded-lg shadow-md">
                 <img
