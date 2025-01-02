@@ -35,11 +35,11 @@ export default function Home() {
       
       {/* Email Subscription iFrame */}
       <div className="py-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Subscribe for Our Email Updates</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">Subscribe for Our Newsletter</h2>
         <iframe 
           width="540" 
           height="820" 
-          src="https://68756547.sibforms.com/serve/MUIFAOIf6A1XBbCeAO_K-hZiUy7F692-C5XDBe7d_MfQa46Tgh3Cg_6DOrUbwhWoVlVR-QK9ArYf219QFZ0RAXYN875hhRnh34qL4OjA6jb3flIB5ogq7VLO33mkTTPW-hmTgDuZtPpjo85xtG2xP0oZhlMHw7UQgbfIU9Vqe4oUN0VMOahZcR0jQAT5iTEyBN95iol1k8O0qYSp" 
+          src="https://68756547.sibforms.com/serve/MUIFADr9Tzhf8nrCiG5OHlYwQoqdBHt7rlaglJmN0O5uo4bUdVPxI-l4fzz9Z9Xjl-_5F-M4VlvqhUEYfkM0oJ-azhoYtJ1NJTwtRGQcHSWYB0n0JURydQK8XNYH5XgasHOez_ZXzDO6iu6FW_qFn_ff6S4RPpTX8M3tWmM1dGdxGjCXJ13JOaWtDv3AkJXIoGidPZ5cAc4IwCgu" 
           frameBorder="0" 
           scrolling="auto" 
           allowFullScreen 
