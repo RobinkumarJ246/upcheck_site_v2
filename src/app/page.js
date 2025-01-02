@@ -10,6 +10,7 @@ import NewsTicker from './components/NewsTicker'
 import { translations } from './translations_old'
 import Script from 'next/script'
 import Footer from './components/Footer'
+import { Analytics } from "@vercel/analytics/react"
 
 export default function Home() {
   const [language, setLanguage] = useState('en')
@@ -27,6 +28,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-teal-50 to-blue-50">
+      <Analytics/>
       <Navbar language={language} setLanguage={setLanguage} />
       <NewsTicker translations={t.news} />
       <Hero translations={t.hero} />
