@@ -97,7 +97,7 @@ export default function ProPlanPage() {
         <div className="container mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-3">Subscribe to the Pro Plan</h2>
           <p className="text-lg mb-8">
-            Fill out the form below to start enquiring about our Pro Plan subscription.
+            Provide your email address to start enquiring about our Pro Plan subscription.
           </p>
           <p className="text-sm text-gray-600 mt-3 mb-6">
           Our team will contact you with more details as soon as possible.

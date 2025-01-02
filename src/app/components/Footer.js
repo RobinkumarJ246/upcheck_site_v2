@@ -36,13 +36,13 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-2 text-gray-600 hover:text-teal-500 transition-colors duration-200 mt-2">
               <FaEnvelope className="h-6 w-6" />
-              <a href="mailto:admin@upcheck.in" className="text-sm underline">
+              <a href="mailto:care@upcheck.in" className="text-sm underline">
                 care@upcheck.in
               </a>
             </div>
             <div className="flex items-center space-x-2 text-gray-600 hover:text-teal-500 transition-colors duration-200 mt-2">
               <FaEnvelope className="h-6 w-6" />
-              <a href="mailto:admin@upcheck.in" className="text-sm underline">
+              <a href="mailto:upcheck.team@gmail.com" className="text-sm underline">
                 upcheck.team@gmail.com
               </a>
             </div>
@@ -53,7 +53,7 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-6">
               <a
-                href="https://instagram.com/your-profile"
+                href="https://www.instagram.com/upcheck_india"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-pink-500 transition-colors duration-200"
@@ -61,21 +61,21 @@ export default function Footer() {
                 <FaInstagram className="h-6 w-6" />
               </a>
               <a
-                href="https://linkedin.com/in/your-profile"
+                href="https://www.linkedin.com/in/upcheck-india-a4aa02343"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
               >
                 <FaLinkedin className="h-6 w-6" />
               </a>
-              <a
+              {/*}<a
                 href="https://youtube.com/your-channel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-red-500 transition-colors duration-200"
               >
                 <FaYoutube className="h-6 w-6" />
-              </a>
+              </a>{*/}
             </div>
           </div>
         </div>
