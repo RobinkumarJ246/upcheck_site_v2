@@ -38,7 +38,7 @@ export default function Home() {
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Subscribe for Our Newsletter</h2>
         <iframe 
           width="540" 
-          height="820" 
+          height="520" 
           src="https://68756547.sibforms.com/serve/MUIFANRKDI17rBB29QoRH5RzszOLYqghOm6NsGyUOi3aoFgmUkWvvVAuKTDraEcLZnA0MPicpL-NWVM5toqczqfmmackgXsWechTJn7ggIqinSxYxQkw0TLx69FNb0glgE8PGItc-ZUk41ki7p6eLP_ZKUJbVjwrtw9kuUyTRgSuoedsCHFnnp_s3h7GC9ytIHTRiftbpKwfzzP3" 
           frameBorder="0" 
           scrolling="auto" 
