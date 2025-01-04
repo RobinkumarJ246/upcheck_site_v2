@@ -190,7 +190,7 @@ const filteredResources = localizedPosts.filter((resource) => {
               <div className="p-6 pt-0">
                 <Link href={`/resources/posts/${resource.id}`}>
                   <button className="w-full py-2 px-4 bg-teal-50 text-teal-600 font-semibold rounded-lg hover:bg-teal-100 transition-colors">
-                    Read More →
+                    {t.readMore}
                   </button>
                 </Link>
               </div>

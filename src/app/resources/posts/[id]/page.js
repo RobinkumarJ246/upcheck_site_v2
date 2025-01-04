@@ -27,6 +27,7 @@ import Heading from '@tiptap/extension-heading';
 import BulletList from '@tiptap/extension-bullet-list';
 import ListItem from '@tiptap/extension-list-item';
 import OrderedList from '@tiptap/extension-ordered-list';
+import { translations } from '../../../translations';
 
 // Reading Progress Component
 const ReadingProgress = () => {
@@ -177,6 +178,7 @@ export default function PostPage({ params }) {
   const [copied, setCopied] = useState(false);
   const unwrappedParams = use(params);
   const postData = posts.find((resource) => resource.id.toString() === unwrappedParams.id);
+  const t = translations[language].resources;
 
   // Get translated content
   const localizedPost = postData ? {
@@ -239,7 +241,7 @@ export default function PostPage({ params }) {
           className="inline-flex items-center text-white mb-6 hover:text-teal-200 transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Resources
+          {t.backText}
         </Link>
 
         {/* Article Card */}

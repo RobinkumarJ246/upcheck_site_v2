@@ -12,6 +12,8 @@ export const translations = {
         headerTitle: "Resources",
         headerSubtitle: "Explore articles, guides, and tips to enhance your shrimp farming.",
         searchPosts: "Search Posts...",
+        readMore: "Read More →",
+        backText: "Back to Resources",
       },
       hero: {
         title: "Reinventing Indian Aquaculture",
@@ -101,6 +103,8 @@ export const translations = {
           headerTitle: "குறிப்புகள்",
           headerSubtitle: "உங்கள் இறால் வளர்ப்பை மேம்படுத்துவதற்கான கட்டுரைகள், வழிகாட்டிகள் மற்றும் உதவிக்குறிப்புகளை ஆராயுங்கள்.",
           searchPosts: "பதிவுகளை தேடுங்கள்...",
+          readMore: "மேலும் வாசிக்க →",
+          backText: "குறிப்புகளுக்கு திரும்பு",
         },
         hero: {
           title: "இந்திய நீர்வாழ் செழிப்பை மறுபிரிவு செய்யுங்கள்",
@@ -190,7 +194,10 @@ export const translations = {
         resources: {
           headerTitle: "संसाधन",
           headerSubtitle: "अपने झींगा पालन को बेहतर बनाने के लिए लेख, मार्गदर्शिकाएँ और टिप्स अन्वेषित करें।",
-          searchPosts: "पोस्ट खोजें...",},
+          searchPosts: "पोस्ट खोजें...",
+          readMore: "और पढ़ें →",
+          backText: "संसाधन",
+        },
 
         hero: {
           title: "भारतीय जलीय कृषि का पुनर्निर्माण",
@@ -280,6 +287,8 @@ export const translations = {
           headerTitle: "వనరులు",
           headerSubtitle: "మీ చేపల వనరును మెరుగుపరచడానికి లేఖలు, మార్గదర్శికలు మరియు సూచనలను అన్వేషించండి.",
           searchPosts: "పోస్ట్‌లను వెతకండి...",
+          readMore: "మరిన్ని →",
+          backText: "వనరులు",
         },      
         hero: {
             title: "భారతీయ జలవనరులను పునర్నిర్మాణం చేయడం",
@@ -370,6 +379,8 @@ export const translations = {
           headerTitle: "সম্পদ",
           headerSubtitle: "আপনার চিংড়ি চাষের উন্নতি করার জন্য লেখা, গাইড এবং পরামর্শ অনুসন্ধান করুন।",
           searchPosts: "পোস্ট অনুসন্ধান করুন...",
+          readMore: "আরও পড়ুন →",
+          backText: "সম্পদ",
         },
         hero: {
             title: "ভারতীয় জলচাষের পুনর্গঠন",
