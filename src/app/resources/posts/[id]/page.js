@@ -1,4 +1,3 @@
-// src/app/resources_beta/posts/[id]/page.js
 'use client';
 
 import { posts } from '../../posts';
@@ -19,6 +18,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import { useLanguage } from '../../../contexts/LanguageContext';
+import Document from '@tiptap/extension-document';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
+import Bold from '@tiptap/extension-bold';
+import Heading from '@tiptap/extension-heading';
+import BulletList from '@tiptap/extension-bullet-list';
+import ListItem from '@tiptap/extension-list-item';
+import OrderedList from '@tiptap/extension-ordered-list';
 
 // Reading Progress Component
 const ReadingProgress = () => {
@@ -86,28 +94,98 @@ const SocialShare = ({ url, title }) => {
   );
 };
 
-// Rich Text Content Component
+const CustomHeading = Heading.configure({
+  levels: [1, 2, 3],
+}).extend({
+  renderHTML({ node, HTMLAttributes }) {
+    const level = node.attrs.level;
+    const classes = {
+      1: 'text-4xl mb-6 font-bold text-gray-900',
+      2: 'text-3xl mb-4 mt-8 font-bold text-gray-900',
+      3: 'text-2xl mb-3 mt-6 font-bold text-gray-900',
+    };
+
+    return [`h${level}`, { ...HTMLAttributes, class: classes[level] }, 0];
+  },
+});
+
 const RichTextContent = ({ content }) => {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      Document,
+      Paragraph.configure({
+        HTMLAttributes: {
+          class: 'mb-4 text-gray-700',
+        },
+      }),
+      Text,
+      Bold.configure({
+        HTMLAttributes: {
+          class: 'font-bold',
+        },
+      }),
+      CustomHeading,
+      BulletList.configure({
+        HTMLAttributes: {
+          class: 'list-disc list-inside space-y-2 my-4 ml-4',
+        },
+      }),
+      OrderedList.configure({
+        HTMLAttributes: {
+          class: 'list-decimal list-inside space-y-2 my-4 ml-4',
+        },
+      }),
+      ListItem.configure({
+        HTMLAttributes: {
+          class: 'ml-4',
+        },
+      }),
+      StarterKit.configure({
+        heading: false,
+        bulletList: false,
+        orderedList: false,
+        listItem: false,
+      }),
+    ],
     content,
     editable: false,
+    parseOptions: {
+      preserveWhitespace: 'full',
+    },
+    editorProps: {
+      attributes: {
+        class: 'prose prose-lg max-w-none',
+      },
+    },
   });
 
-  return (
-    <EditorContent 
-      editor={editor} 
-      className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-teal-600"
-    />
-  );
+  useEffect(() => {
+    if (editor && content) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
+
+  if (!editor) {
+    return null;
+  }
+
+  return <EditorContent editor={editor} />;
 };
 
 export default function PostPage({ params }) {
+  const { language } = useLanguage();
   const [copied, setCopied] = useState(false);
   const unwrappedParams = use(params);
   const postData = posts.find((resource) => resource.id.toString() === unwrappedParams.id);
 
-  if (!postData) {
+  // Get translated content
+  const localizedPost = postData ? {
+    ...postData,
+    title: postData.translations[language]?.title || postData.translations.en.title,
+    content: postData.translations[language]?.content || postData.translations.en.content
+  } : null;
+
+  if (!localizedPost) {
     return (
       <div className="min-h-screen bg-gray-50 py-12 px-6 lg:px-16">
         <div className="text-center text-xl font-semibold text-gray-500">
@@ -125,13 +203,13 @@ export default function PostPage({ params }) {
     });
   };
 
-  const formattedDate = new Date(postData.publishedAt).toLocaleDateString('en-US', {
+  const formattedDate = new Date(localizedPost.publishedAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   });
 
-  const wordCount = postData.content.split(/\s+/).length;
+  const wordCount = localizedPost.content.split(/\s+/).length;
   const readingTime = Math.max(1, Math.ceil(wordCount / 200));
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
@@ -142,8 +220,8 @@ export default function PostPage({ params }) {
       {/* Hero Section */}
       <div className="relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh]">
         <Image
-          src={postData.thumbnail}
-          alt={postData.title}
+          src={localizedPost.thumbnail}
+          alt={localizedPost.title}
           fill
           className="object-cover"
           priority
@@ -168,7 +246,7 @@ export default function PostPage({ params }) {
         <article className="bg-white rounded-xl shadow-xl p-6 md:p-10">
           {/* Categories */}
           <div className="flex flex-wrap gap-2 mb-6">
-            {postData.categories.map((category, index) => (
+            {localizedPost.categories.map((category, index) => (
               <span
                 key={index}
                 className="px-3 py-1 bg-teal-100 text-teal-700 text-sm font-medium rounded-full"
@@ -180,14 +258,14 @@ export default function PostPage({ params }) {
 
           {/* Title */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            {postData.title}
+            {localizedPost.title}
           </h1>
 
           {/* Meta Information */}
           <div className="flex flex-wrap gap-4 md:gap-6 text-gray-600 mb-8 pb-8 border-b border-gray-200">
             <div className="flex items-center">
               <User className="w-5 h-5 mr-2" />
-              <span>{postData.author}</span>
+              <span>{localizedPost.author}</span>
             </div>
             <div className="flex items-center">
               <Calendar className="w-5 h-5 mr-2" />
@@ -201,14 +279,14 @@ export default function PostPage({ params }) {
 
           {/* Rich Text Content */}
           <div className="prose prose-lg max-w-none">
-            <RichTextContent content={postData.content} />
+            <RichTextContent content={localizedPost.content} />
           </div>
 
           {/* Tags */}
           <div className="mt-8 pt-8 border-t border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Related Topics</h3>
             <div className="flex flex-wrap gap-2">
-              {postData.tags.map((tag, index) => (
+              {localizedPost.tags.map((tag, index) => (
                 <span
                   key={index}
                   className="px-4 py-2 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-gray-200 transition-colors"
@@ -224,7 +302,7 @@ export default function PostPage({ params }) {
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
               <h3 className="text-lg font-semibold text-gray-900">Share this post</h3>
               <div className="flex flex-wrap gap-4 items-center">
-                <SocialShare url={currentUrl} title={postData.title} />
+                <SocialShare url={currentUrl} title={localizedPost.title} />
                 <button
                   onClick={copyPostUrl}
                   className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
@@ -236,24 +314,6 @@ export default function PostPage({ params }) {
             </div>
           </div>
         </article>
-
-        {/* Navigation Suggestions */}
-        {/*}
-        <div className="mt-12 mb-20 grid md:grid-cols-2 gap-6">
-          <Link href="/resources_beta" className="block">
-            <div className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
-              <span className="text-sm text-gray-500">Previous Article</span>
-              <h3 className="text-lg font-semibold text-gray-900 mt-1">Previous post title</h3>
-            </div>
-          </Link>
-          <Link href="/resources_beta" className="block">
-            <div className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
-              <span className="text-sm text-gray-500">Next Article</span>
-              <h3 className="text-lg font-semibold text-gray-900 mt-1">Next post title</h3>
-            </div>
-          </Link>
-        </div>
-        {*/}
       </div>
     </div>
   );

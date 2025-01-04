@@ -4,6 +4,7 @@ import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import Navbar from '../components/Navbar';
 import { useState, useEffect } from 'react'
 import { translations } from '../translations';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function AboutPage() {
 
@@ -25,18 +26,16 @@ export default function AboutPage() {
     },
   ]);
 
-  const [language, setLanguage] = useState('en')
-      const [mounted, setMounted] = useState(false)
+  const { language } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
     
-      useEffect(() => {
-        setMounted(true)
-        const savedLang = localStorage.getItem('language') || 'en'
-        setLanguage(savedLang)
-      }, [])
-    
-      if (!mounted) return null
-    
-      const t = translations[language]
+      const t = translations[language].about
 
   const toggleFAQ = (index) => {
     setFaqs((prevFaqs) =>
@@ -48,14 +47,14 @@ export default function AboutPage() {
 
   return (
     <div>
-        <Navbar language={language} setLanguage={setLanguage} />
+        <Navbar />
     <div className="min-h-screen bg-gradient-to-r from-teal-50 to-blue-50 text-gray-800">
       {/* Intro Section */}
       <section className="py-12 bg-gradient-to-r from-teal-600 to-blue-600 text-white text-center">
         <div className="max-w-4xl mx-auto px-4 mt-10">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">About UpCheck</h1>
           <p className="text-lg">
-            UpCheck is dedicated to transforming shrimp farming through innovative solutions that empower farmers. We enable sustainable aquaculture, higher yields, and reduced environmental impact by providing real-time data, optimized farming practices, and market connectivity. Our mission is to revolutionize shrimp farming by fostering smarter practices, improving pond conditions, and supporting farmers in building a sustainable and prosperous aquaculture ecosystem.
+            {t.intro}
           </p>
         </div>
       </section>
@@ -63,11 +62,11 @@ export default function AboutPage() {
       {/* Our Story */}
       <section className="py-12 text-center px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Our Story</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">{t.story_title}</h2>
           <p className="text-lg leading-relaxed">
-            One day, we happened to meet the father of a mutual neighborhood friend, a hardworking shrimp farmer from a small town near ours. What began as casual small talk soon turned into something deeper as he opened up about the struggles he faced every day. <br /><br />
-            His words stayed with us long after the conversation ended. That evening, as we discussed what we had heard, we couldn't shake off a feeling, we had to do something. Shrimp farming shouldn't be this hard. Farmers like him deserved better tools, better support, and a way to make their hard work pay off. <br /><br />
-            That's how UpCheck was born. We started with one clear goal: to help shrimp farmers like him take control of their ponds and their future. From that one conversation, we’ve come a long way. But our purpose remains the same: to bring hope, support, and change to the hardworking farmers who are the backbone of aquaculture.
+            {t.story_para1} <br /><br />
+            {t.story_para2} <br /><br />
+            {t.story_para3}
           </p>
         </div>
       </section>

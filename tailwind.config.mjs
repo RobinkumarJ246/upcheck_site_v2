@@ -13,5 +13,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Add the Tailwind Typography plugin here
+    import('@tailwindcss/typography')
+  ],
 };
