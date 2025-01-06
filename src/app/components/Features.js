@@ -1,45 +1,63 @@
-// src/app/components/Features.js
+import React from 'react';
 import { 
   Activity, AlertCircle, Users, LineChart,
   Droplets, ThermometerSun, Wind, Fish
 } from 'lucide-react';
 
-export default function Features({ translations }) {
+const YouTubeEmbed = ({ videoId }) => (
+  <div className="relative w-full overflow-hidden pt-[56.25%]">
+    <iframe
+      className="absolute top-0 left-0 w-full h-full"
+      src={`https://www.youtube.com/embed/${videoId}`}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    />
+  </div>
+);
+
+export default function Features({ translations, youtubeVideoId }) {
   const features = [
     {
-      icon: Activity,
-      title: translations.monitoring.title,
-      description: translations.monitoring.description,
-      iconColor: "text-teal-500"
+      icon: ThermometerSun,
+      title: translations.monitoring.title || "Real-time Monitoring",
+      description: translations.monitoring.description || "Track water quality parameters, temperature, and pond conditions in real-time with our advanced sensors.",
+      iconColor: "text-teal-500",
+      bgColor: "bg-teal-50"
     },
     {
       icon: AlertCircle,
-      title: translations.prediction.title,
-      description: translations.prediction.description,
-      iconColor: "text-red-500"
+      title: translations.prediction.title || "Early Warning System",
+      description: translations.prediction.description || "Get instant alerts and predictive insights to prevent diseases and maintain optimal pond conditions.",
+      iconColor: "text-red-500",
+      bgColor: "bg-red-50"
     },
     {
-      icon: LineChart,
-      title: translations.feeding.title,
-      description: translations.feeding.description,
-      iconColor: "text-blue-500"
+      icon: Fish,
+      title: translations.feeding.title || "Smart Feeding Management",
+      description: translations.feeding.description || "Optimize feed conversion ratio with AI-powered feeding recommendations and tracking.",
+      iconColor: "text-blue-500",
+      bgColor: "bg-blue-50"
     },
     {
       icon: Users,
-      title: translations.community.title,
-      description: translations.community.description,
-      iconColor: "text-purple-500"
+      title: translations.community.title || "Expert Community",
+      description: translations.community.description || "Connect with aquaculture experts and fellow farmers for advice and knowledge sharing.",
+      iconColor: "text-purple-500",
+      bgColor: "bg-purple-50"
     }
   ];
 
   return (
-    <div className="py-24 bg-white">
+    <div className="py-24 bg-gradient-to-b from-white to-teal-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            {translations.title}
+        {/* Title Section */}
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
+            {translations.title || "Transform Your Shrimp Farm"}
           </h2>
+          <p className="text-xl text-gray-600">
+            {translations.subtitle || "Harness the power of technology to maximize your farm's productivity and sustainability"}
+          </p>
         </div>
 
         {/* Features Grid */}
@@ -47,43 +65,42 @@ export default function Features({ translations }) {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-teal-500 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="relative group bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
             >
-              <div>
-                <span className={`rounded-lg inline-flex p-3 ring-4 ring-white ${feature.iconColor} bg-opacity-10`}>
-                  <feature.icon className="h-6 w-6" aria-hidden="true" />
-                </span>
+              <div className={`${feature.bgColor} rounded-xl inline-flex p-4 mb-6`}>
+                <feature.icon 
+                  className={`h-8 w-8 ${feature.iconColor}`} 
+                  aria-hidden="true" 
+                />
               </div>
-              <div className="mt-8">
-                <h3 className="text-lg font-medium">
-                  <a href="#" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    {feature.title}
-                  </a>
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {feature.title}
                 </h3>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="text-gray-600">
                   {feature.description}
                 </p>
               </div>
+              <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-200 group-hover:ring-teal-500 transition-colors duration-300" />
             </div>
           ))}
         </div>
 
-        {/* Video Player Section */}
-        <div className="mt-16">
-          <div className="relative max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-lg">
-            <video 
-              controls 
-              className="w-full h-full"
-              poster="/video-thumbnail.jpg" // Optional: Add a poster image for the video
-            >
-              <source src="showcase_video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+        {/* Video Section */}
+        <div className="mt-24">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white p-4 rounded-2xl shadow-xl">
+              <YouTubeEmbed videoId={youtubeVideoId || "sxu62fm_Z5E?si=Xx1aFnL43oP5h3VS"} />
+            </div>
+            <div className="mt-8 text-center">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                {translations.videoTitle || "See Upcheck in Action"}
+              </h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                {translations.videoDescription || "Watch how Upcheck is revolutionizing shrimp farming through smart technology and data-driven insights."}
+              </p>
+            </div>
           </div>
-          <p className="mt-4 text-center text-gray-500">
-            {/*}{translations.videoDescription}{*/} Watch the video to explore the features and benefits of our solution.
-          </p>
         </div>
       </div>
     </div>

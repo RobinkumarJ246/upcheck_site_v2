@@ -6,7 +6,7 @@ export const posts = [
     author: "Lathikaa Shri S",
     publishedAt: "2025-01-04",
     tags: ["Seasons","Management","Shrimp","Climate","Weather"],
-    categories: [,"Seasons","Weather"],
+    categories: [,"Seasons"],
     thumbnail: "/weather.avif",
     translations: {
       en: {

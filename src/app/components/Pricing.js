@@ -38,9 +38,11 @@ export default function Pricing({ translations }) {
                   </li>
                 ))}
               </ul>
+              <Link href='/'>
               <button className="mt-8 w-full bg-teal-100 text-teal-700 py-3 px-4 rounded-lg hover:bg-teal-200 transition-colors">
                 Get Started
               </button>
+              </Link>
             </div>
           </div>
 

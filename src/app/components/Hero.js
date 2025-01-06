@@ -19,13 +19,13 @@ export default function Hero({ translations }) {
             </p>
             <div className="mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
-                <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-3 text-base font-medium text-white hover:bg-teal-700 md:py-4 md:px-10 md:text-lg">
+                <a href="comingsoon_android" className="flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-8 py-3 text-base font-medium text-white hover:bg-teal-700 md:py-4 md:px-10 md:text-lg">
                   <FaGooglePlay className="w-5 h-5 mr-2" />
                   {translations.cta.primary}
                 </a>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
-                <a href="#" className="flex items-center justify-center rounded-md border border-transparent bg-blue-100 px-8 py-3 text-base font-medium text-blue-700 hover:bg-blue-200 md:py-4 md:px-10 md:text-lg">
+                <a href="comingsoon_ios" className="flex items-center justify-center rounded-md border border-transparent bg-blue-100 px-8 py-3 text-base font-medium text-blue-700 hover:bg-blue-200 md:py-4 md:px-10 md:text-lg">
                   <FaAppStoreIos className="w-5 h-5 mr-2" />
                   {translations.cta.secondary}
                 </a>

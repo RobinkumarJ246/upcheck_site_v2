@@ -16,7 +16,7 @@ export const translations = {
         backText: "Back to Resources",
       },
       hero: {
-        title: "Reinventing Indian Aquaculture",
+        title: "Reinventing Shrimp Aquaculture",
         subtitle: "Smart Monitoring for Shrimp Farms",
         description: "Monitor your pond parameters in real-time, predict diseases, optimize feeding, and connect with fellow farmers - all in one powerful app.",
         cta: {
@@ -107,7 +107,7 @@ export const translations = {
           backText: "குறிப்புகளுக்கு திரும்பு",
         },
         hero: {
-          title: "இந்திய நீர்வாழ் செழிப்பை மறுபிரிவு செய்யுங்கள்",
+          title: "இறால் விவசாயத்தை மறுவாழ்வாக்கும்",
           subtitle: "செயற்கை நுண்ணறிவுடன் சிக்கலற்ற கண்காணிப்பு",
           description: "உங்கள் குளம் அளவுகோல்களை நேரடியாக கண்காணிக்கவும், நோய்களைத் தடுக்கவும், உணவளிப்பை மேம்படுத்தவும் மற்றும் விவசாயிகளுடன் இணைந்திருங்கள் - எல்லாமே ஒரு சக்திவாய்ந்த செயலியில்.",
           cta: {
@@ -200,7 +200,7 @@ export const translations = {
         },
 
         hero: {
-          title: "भारतीय जलीय कृषि का पुनर्निर्माण",
+          title: "झींगा पालन को पुनर्संचालित करना",
           subtitle: "झींगा तालाबों की स्मार्ट निगरानी",
           description: "अपने तालाब के मापदंडों की रीयल-टाइम निगरानी करें, बीमारियों का पूर्वानुमान लगाएं, भोजन का अनुकूलन करें और अन्य किसानों के साथ जुड़ें - यह सब एक शक्तिशाली ऐप में।",
           cta: {
@@ -291,7 +291,7 @@ export const translations = {
           backText: "వనరులు",
         },      
         hero: {
-            title: "భారతీయ జలవనరులను పునర్నిర్మాణం చేయడం",
+            title: "చేపల వనరును పునఃప్రవర్తించండి",
             subtitle: "చేపల కొలనుల బుద్ధిమంతమైన పరిశీలన",
             description: "మీ కొలను ప్యారామీటర్లను తక్షణం చూడండి, వ్యాధులను నివారించండి, ఆహారాన్ని మెరుగుపరచండి, మరియు ఇతర రైతులతో కనెక్ట్ చేయండి - అంతా ఒక శక్తివంతమైన యాప్‌లో.",
             cta: {
@@ -383,7 +383,7 @@ export const translations = {
           backText: "সম্পদ",
         },
         hero: {
-            title: "ভারতীয় জলচাষের পুনর্গঠন",
+            title: "চিংড়ি চাষের উন্নতি করুন",
             subtitle: "চিংড়ি পুকুরের স্মার্ট পর্যবেক্ষণ",
             description: "আপনার পুকুরের পরামিতিগুলি রিয়েল-টাইমে মনিটর করুন, রোগগুলি পূর্বাভাস দিন, খাদ্যের অপচয় কমান এবং অন্যান্য কৃষকদের সাথে সংযুক্ত থাকুন - সবই একটি শক্তিশালী অ্যাপে।",
             cta: {
