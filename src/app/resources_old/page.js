@@ -1,27 +1,26 @@
-// src/app/resources/page.js
 'use client'
 
 import Link from 'next/link';
 import { useState } from 'react';
 import { Search, Tag, Calendar, User } from 'lucide-react';
+import { posts } from './posts';
 import Image from 'next/image';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Navbar from '../components/Navbar';
 import { useLanguage } from '../contexts/LanguageContext';
-import { useEffect } from 'react';
+import {use, useEffect } from 'react';
 import { translations } from '../translations';
-import useSWR from 'swr';
 
-const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const RichTextPreview = ({ content }) => {
   const editor = useEditor({
     extensions: [StarterKit],
-    content: content ? content.substring(0, 150) + '...' : '',
+    content: content.substring(0, 150) + '...',
     editable: false,
   });
 
+  // This effect ensures the editor content updates when the language changes
   useEffect(() => {
     if (editor && content) {
       editor.commands.setContent(content.substring(0, 150) + '...');
@@ -42,32 +41,41 @@ export default function ResourcesPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const t = translations[language].resources;
 
-  const { data: posts, error, isLoading } = useSWR('/api/posts', fetcher);
-
-  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  if (error) return <div className="min-h-screen flex items-center justify-center">Error loading posts</div>;
-
+  // Transform posts to include translated content
   const localizedPosts = posts.map(post => ({
     ...post,
     title: post.translations[language]?.title || post.translations.en.title,
     content: post.translations[language]?.content || post.translations.en.content,
-    id: post.id || post._id // Support both id formats
+    // Keep other fields unchanged
+    author: post.author,
+    publishedAt: post.publishedAt,
+    tags: post.tags,
+    categories: post.categories,
+    thumbnail: post.thumbnail,
+    id: post.id
   }));
 
   // Get unique categories
   const allCategories = ['All', ...new Set(posts.flatMap(post => post.categories))];
 
-  // Filter posts based on search and category
-  const filteredResources = localizedPosts.filter((resource) => {
-    const searchTermLower = searchTerm.toLowerCase();
-    const matchesTitle = resource.title.toLowerCase().includes(searchTermLower);
-    const matchesTags = resource.tags.some(tag => 
-      tag.toLowerCase().includes(searchTermLower)
-    );
-    const matchesCategory = selectedCategory === 'All' || resource.categories.includes(selectedCategory);
-    
-    return (matchesTitle || matchesTags) && matchesCategory;
-  });
+// Filter posts based on search and category
+const filteredResources = localizedPosts.filter((resource) => {
+  const searchTermLower = searchTerm.toLowerCase();
+  
+  // Check if title matches
+  const matchesTitle = resource.title.toLowerCase().includes(searchTermLower);
+  
+  // Check if any tag matches
+  const matchesTags = resource.tags.some(tag => 
+    tag.toLowerCase().includes(searchTermLower)
+  );
+  
+  // Check if category matches
+  const matchesCategory = selectedCategory === 'All' || resource.categories.includes(selectedCategory);
+  
+  // Return true if either title or tags match, and category matches
+  return (matchesTitle || matchesTags) && matchesCategory;
+});
 
   return (
     <div>

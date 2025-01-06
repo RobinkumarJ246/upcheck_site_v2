@@ -1,6 +1,6 @@
 'use client';
 
-import useSWR from 'swr';
+import { posts } from '../../posts';
 import { 
   Copy, 
   Calendar, 
@@ -173,32 +173,28 @@ const RichTextContent = ({ content }) => {
   return <EditorContent editor={editor} />;
 };
 
-const fetcher = (...args) => fetch(...args).then(res => res.json());
-
 export default function PostPage({ params }) {
   const { language } = useLanguage();
   const [copied, setCopied] = useState(false);
   const unwrappedParams = use(params);
+  const postData = posts.find((resource) => resource.id.toString() === unwrappedParams.id);
   const t = translations[language].resources;
 
   // Get translated content
-  const { data: postData, error, isLoading } = useSWR(
-    `/api/posts/${unwrappedParams.id}`,
-    fetcher
-  );
-
-  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  if (error) return <div className="min-h-screen flex items-center justify-center">Error loading post</div>;
-
   const localizedPost = postData ? {
     ...postData,
-    id: postData.id || postData._id, // Support both id formats
     title: postData.translations[language]?.title || postData.translations.en.title,
     content: postData.translations[language]?.content || postData.translations.en.content
   } : null;
 
   if (!localizedPost) {
-    return <div className="min-h-screen flex items-center justify-center">Post not found</div>;
+    return (
+      <div className="min-h-screen bg-gray-50 py-12 px-6 lg:px-16">
+        <div className="text-center text-xl font-semibold text-gray-500">
+          Post not found
+        </div>
+      </div>
+    );
   }
 
   const copyPostUrl = () => {
