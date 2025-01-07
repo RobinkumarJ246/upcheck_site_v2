@@ -12,6 +12,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useEffect } from 'react';
 import { translations } from '../translations';
 import useSWR from 'swr';
+import Skeleton from '../components/SkeletalLoading';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
@@ -44,7 +45,7 @@ export default function ResourcesPage() {
 
   const { data: posts, error, isLoading } = useSWR('/api/posts', fetcher);
 
-  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  if (isLoading) return <Skeleton />;
   if (error) return <div className="min-h-screen flex items-center justify-center">Error loading posts</div>;
 
   const localizedPosts = posts.map(post => ({

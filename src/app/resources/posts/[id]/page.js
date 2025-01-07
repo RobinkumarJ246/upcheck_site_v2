@@ -28,6 +28,7 @@ import BulletList from '@tiptap/extension-bullet-list';
 import ListItem from '@tiptap/extension-list-item';
 import OrderedList from '@tiptap/extension-ordered-list';
 import { translations } from '../../../translations';
+import Skeleton from '@/app/components/SkeletalLoading';
 
 // Reading Progress Component
 const ReadingProgress = () => {
@@ -187,7 +188,7 @@ export default function PostPage({ params }) {
     fetcher
   );
 
-  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  if (isLoading) return <Skeleton variant="post" />;
   if (error) return <div className="min-h-screen flex items-center justify-center">Error loading post</div>;
 
   const localizedPost = postData ? {
