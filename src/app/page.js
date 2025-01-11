@@ -12,6 +12,7 @@ import Script from 'next/script'
 import Footer from './components/Footer'
 import { Analytics } from "@vercel/analytics/react"
 import { useLanguage } from './contexts/LanguageContext'
+import Aichatsupport from './components/Aichatsupport'
 
 export default function Home() {
   const { language } = useLanguage()
@@ -33,6 +34,7 @@ export default function Home() {
       <Hero translations={t.hero} />
       <Features translations={t.features} />
       <Pricing translations={t.pricing} />
+      <Aichatsupport position={{ bottom: 20, right: 20 }} />
       
       {/* Email Subscription iFrame */}
       <div className="py-12 text-center">
@@ -51,7 +53,7 @@ export default function Home() {
       <Footer translations={t.footer} />
 
       {/* Brevo Conversations Chat Widget */}
-      <Script
+      {/*}<Script
         id="brevo-conversations"
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{
@@ -68,7 +70,7 @@ export default function Home() {
           })(document, window, 'BrevoConversations');
         `,
         }}
-      />
+      />{*/}
     </div>
   )
 }
