@@ -12,7 +12,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const langMenuRef = useRef(null)
 
-
   const languages = [
     { code: 'en', name: 'English' },
     { code: 'hi', name: 'हिंदी' },
@@ -25,10 +24,7 @@ export default function Navbar() {
     { name: 'About', href: 'about' },
     { name: 'Resources', href: 'resources' },
     { name: 'Contact', href: '/#contact' },
-    {
-      name: 'Join us',
-      href: 'https://docs.google.com/forms/d/e/1FAIpQLSdwyNgXZwNwmockt0Czo3N7XQ-vKgXKJj9Nr26HOz53i48yMQ/viewform?usp=dialog'
-    }
+    { name: 'Join us', href: 'careers' }
   ]
 
   // Load language from localStorage on initial render

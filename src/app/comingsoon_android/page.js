@@ -133,9 +133,9 @@ export default function AndroidComingSoon({ translations }) {
             <h2 className="text-2xl font-semibold text-center mb-6">
               Launching In
             </h2>
-            <CountdownTimer targetDate="2025-03-28T00:00:00" />
+            <CountdownTimer targetDate="2025-05-01T00:00:00" />
             <p className="text-center mt-6 text-gray-600">
-              Expected launch date: March 28, 2025
+              Expected launch date: May 01, 2025
             </p>
           </div>
 
