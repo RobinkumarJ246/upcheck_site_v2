@@ -149,6 +149,9 @@ export default function ResourcesPage() {
                   fill
                   className="object-cover rounded-t-xl"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  onError={(e) => {
+                    e.target.src = '/shrimp_farm.jpg'; // Fallback image
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-xl" />
                 <div className="absolute top-2 left-2 flex flex-wrap gap-2">

@@ -234,6 +234,9 @@ export default function PostPage({ params }) {
           priority
           sizes="100vw"
           quality={85}
+          onError={(e) => {
+            e.target.src = '/shrimp_farm.jpg'; // Fallback image
+          }}
         />
         <div className="absolute inset-0 bg-black bg-opacity-40" />
       </div>
