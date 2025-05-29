@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X, Globe, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -20,11 +20,22 @@ export default function Navbar() {
     { code: 'bn', name: 'বাংলা' }
   ]
 
-  const navigation = [
-    { name: 'About', href: 'about' },
-    { name: 'Resources', href: 'resources' },
+  const exploreDropdown = [
+    { name: 'About', href: '/about' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Products', href: '/products' }
+  ]
+
+  const participateDropdown = [
+    { name: 'Surveys', href: '/surveys' },
+    { name: 'Polls', href: '/polls' },
+    { name: 'Feedback', href: '/feedback' },
+    { name: 'Events', href: '/events' }
+  ]
+
+  const mainNavigation = [
     { name: 'Contact', href: '/#contact' },
-    { name: 'Join us', href: 'careers' }
+    { name: 'Join us', href: '/careers' }
   ]
 
   // Load language from localStorage on initial render
@@ -89,8 +100,53 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            {navigation.map((item) => (
+          <div className="hidden md:flex md:items-center md:space-x-6">
+            {/* Explore Dropdown */}
+            <div className="relative group">
+              <button className="flex items-center space-x-1 text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group-hover:text-teal-600">
+                <span>Explore</span>
+                <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+              </button>
+              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transform transition-all duration-200 ease-out opacity-0 scale-95 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible z-10">
+                <div className="py-1" role="menu">
+                  {exploreDropdown.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 transition-colors duration-200"
+                      role="menuitem"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Participate Dropdown */}
+            <div className="relative group">
+              <button className="flex items-center space-x-1 text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group-hover:text-teal-600">
+                <span>Participate</span>
+                <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+              </button>
+              <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transform transition-all duration-200 ease-out opacity-0 scale-95 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible z-10">
+                <div className="py-1" role="menu">
+                  {participateDropdown.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 transition-colors duration-200"
+                      role="menuitem"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Regular Navigation Items */}
+            {mainNavigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -146,16 +202,49 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg mt-2 shadow-lg">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
+              {/* Explore Section */}
+              <div className="border-b border-gray-100 pb-2 mb-2">
+                <div className="px-3 py-2 text-sm font-semibold text-gray-500">Explore</div>
+                {exploreDropdown.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+
+              {/* Participate Section */}
+              <div className="border-b border-gray-100 pb-2 mb-2">
+                <div className="px-3 py-2 text-sm font-semibold text-gray-500">Participate</div>
+                {participateDropdown.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+
+              {/* Main Navigation */}
+              <div>
+                {mainNavigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
 
               {/* Language options in mobile menu */}
               <div className="border-t border-gray-200 mt-2 pt-2">
