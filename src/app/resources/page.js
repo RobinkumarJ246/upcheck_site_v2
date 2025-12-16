@@ -29,8 +29,8 @@ const RichTextPreview = ({ content }) => {
   }, [content, editor]);
 
   return (
-    <EditorContent 
-      editor={editor} 
+    <EditorContent
+      editor={editor}
       className="prose-sm max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 overflow-hidden"
     />
   );
@@ -67,11 +67,11 @@ export default function ResourcesPage() {
   const filteredResources = localizedPosts.filter((resource) => {
     const searchTermLower = searchTerm.toLowerCase();
     const matchesTitle = resource.title.toLowerCase().includes(searchTermLower);
-    const matchesTags = resource.tags.some(tag => 
+    const matchesTags = resource.tags.some(tag =>
       tag.toLowerCase().includes(searchTermLower)
     );
     const matchesCategory = selectedCategory === 'All' || resource.categories.includes(selectedCategory);
-    
+
     return (matchesTitle || matchesTags) && matchesCategory;
   });
 
@@ -82,12 +82,12 @@ export default function ResourcesPage() {
 
   return (
     <div>
-      <Navbar/>
-      <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-16">
+      <Navbar />
+      <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-16">
         {/* Page Header */}
         <div className="text-center mb-12 mt-12">
-          <h1 className="text-4xl font-bold text-teal-700">{t.headerTitle}</h1>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-slate-900">{t.headerTitle}</h1>
+          <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
             {t.headerSubtitle}
           </p>
         </div>
@@ -99,11 +99,11 @@ export default function ResourcesPage() {
               <input
                 type="text"
                 placeholder={t.searchPosts}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white placeholder-slate-400"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <Search className="absolute right-3 top-2.5 text-gray-400" size={20} />
+              <Search className="absolute right-3 top-2.5 text-slate-400" size={20} />
             </div>
 
             <div className="flex gap-2 overflow-x-auto pb-2 w-full md:w-auto">
@@ -113,8 +113,8 @@ export default function ResourcesPage() {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors
                     ${selectedCategory === category
-                      ? 'bg-teal-600 text-white'
-                      : 'bg-white text-gray-600 hover:bg-teal-50'}`}
+                      ? 'bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-md'
+                      : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}`}
                 >
                   {category}
                 </button>
@@ -139,7 +139,7 @@ export default function ResourcesPage() {
           {currentItems.map((resource) => (
             <div
               key={resource.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="bg-white rounded-xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.1)] hover:shadow-xl transition-all duration-300 flex flex-col border border-slate-100"
             >
               {/* Card content remains the same as your original code */}
               <div className="relative h-48">
@@ -153,14 +153,14 @@ export default function ResourcesPage() {
                     e.target.src = '/shrimp_farm.jpg'; // Fallback image
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent rounded-t-xl" />
                 <div className="absolute top-2 left-2 flex flex-wrap gap-2">
                   {resource.categories.map((category, index) => (
                     <span
                       key={index}
-                      className="flex items-center px-3 py-1 bg-white/90 backdrop-blur-sm text-teal-700 text-xs font-semibold rounded-full"
+                      className="flex items-center px-3 py-1 bg-white/90 backdrop-blur-md text-teal-700 text-xs font-semibold rounded-full shadow-sm"
                     >
-                      <Tag size={14} className="mr-1 text-teal-500" />
+                      <Tag size={14} className="mr-1 text-teal-600" />
                       {category}
                     </span>
                   ))}
@@ -168,39 +168,36 @@ export default function ResourcesPage() {
               </div>
 
               <div className="p-6 flex-grow">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">{resource.title}</h2>
+                <h2 className="text-xl font-semibold text-slate-900 mb-3">{resource.title}</h2>
                 <div className="h-20 overflow-hidden mb-4">
                   <RichTextPreview content={resource.content} language={language} />
                 </div>
-                
-                <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
+
+                <div className="flex flex-wrap gap-4 text-sm text-slate-500 mb-4">
                   <span className="flex items-center">
-                    <User size={16} className="mr-1" />
+                    <User size={16} className="mr-1 text-teal-600" />
                     {resource.author}
                   </span>
                   <span className="flex items-center">
-                    <Calendar size={16} className="mr-1" />
+                    <Calendar size={16} className="mr-1 text-teal-600" />
                     {new Date(resource.publishedAt).toLocaleDateString()}
                   </span>
                 </div>
               </div>
 
-              <div className="px-6 py-4 border-t border-gray-100">
-                <div className="flex flex-wrap gap-2">
+              <div className="px-6 py-4 border-t border-slate-50 bg-slate-50/50 rounded-b-xl">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {resource.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gray-50 text-gray-600 text-xs rounded-full hover:bg-gray-100 transition-colors"
+                      className="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-xs rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
-
-              <div className="p-6 pt-0">
                 <Link href={`/resources/posts/${resource.id}`}>
-                  <button className="w-full py-2 px-4 bg-teal-50 text-teal-600 font-semibold rounded-lg hover:bg-teal-100 transition-colors">
+                  <button className="w-full py-2 px-4 bg-white border border-slate-200 text-teal-700 font-semibold rounded-lg hover:bg-teal-50 transition-colors shadow-sm">
                     {t.readMore}
                   </button>
                 </Link>
@@ -222,7 +219,7 @@ export default function ResourcesPage() {
 
         {/* No Results Message */}
         {filteredResources.length === 0 && (
-          <div className="text-center text-gray-500 mt-12">
+          <div className="text-center text-slate-500 mt-12">
             <p>No resources found matching your search.</p>
           </div>
         )}

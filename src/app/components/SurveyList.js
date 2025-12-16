@@ -12,18 +12,18 @@ export default function SurveyList() {
     async function fetchSurveys() {
       try {
         const response = await fetch('/api/surveys');
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch surveys');
         }
-        
+
         const data = await response.json();
         console.log('Surveys data received:', data); // Debug log
-        
+
         // Handle different response structures
         const surveyArray = data.surveys || data || [];
         console.log('Processed surveys array:', surveyArray); // Debug log
-        
+
         setSurveys(surveyArray);
       } catch (err) {
         console.error('Error fetching surveys:', err);
@@ -32,7 +32,7 @@ export default function SurveyList() {
         setLoading(false);
       }
     }
-    
+
     fetchSurveys();
   }, []);
 
@@ -64,7 +64,7 @@ export default function SurveyList() {
       </div>
     );
   }
-  
+
   // Debug information about available surveys
   console.log('Rendering surveys with IDs:', surveys.map(s => ({ id: s._id, title: s.title })));
 
@@ -74,29 +74,29 @@ export default function SurveyList() {
         // Handle different ID formats - use _id, id, or string representation
         const surveyId = survey._id?.toString() || survey.id || survey._id;
         console.log('Survey link ID:', surveyId, 'Original:', survey._id);
-        
+
         return (
           <Link href={`/surveys/${surveyId}`} key={surveyId}>
             <div className="relative group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
               {survey.category && (
                 <div className="absolute top-4 right-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-brand-cyan/10 text-brand-dark">
                     {survey.category}
                   </span>
                 </div>
               )}
-              
+
               <h2 className="text-xl font-semibold mb-2 pr-20">{survey.title}</h2>
               <p className="text-gray-600 mb-4 line-clamp-2">{survey.description}</p>
-              
+
               <div className="flex justify-between items-center text-sm text-gray-500 mt-4">
                 <div className="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-brand-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{survey.questionCount || 0} questions</span>
                 </div>
-                
+
                 <div className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -104,19 +104,19 @@ export default function SurveyList() {
                   <span>Est. time: {survey.estimatedTimeMinutes || 5} min</span>
                 </div>
               </div>
-              
+
               <div className="mt-4 flex justify-end">
-                <span className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-sm hover:shadow-md transition-all duration-300">
+                <span className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-sm hover:shadow-md transition-all duration-300">
                   Participate
                 </span>
               </div>
-              
-              <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-200 group-hover:ring-teal-500 transition-colors duration-300" />
+
+              <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-200 group-hover:ring-brand-cyan transition-colors duration-300" />
             </div>
           </Link>
         );
       })}
-      
+
       {surveys.length === 0 && (
         <div className="col-span-full p-8 text-center bg-white rounded-xl shadow-lg">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

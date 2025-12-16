@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import { Menu, X, Globe, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
@@ -77,25 +78,21 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-gradient-to-r from-teal-50 to-blue-50'
-      } fixed top-0 left-0 right-0 mx-auto w-full md:w-11/12 lg:w-10/12 xl:w-9/12 rounded-b-2xl z-10 transition-all duration-300 ease-in-out`}
+      className={`${isScrolled ? 'backdrop-blur-md bg-white/90 shadow-sm border-b border-slate-200/50' : 'backdrop-blur-sm bg-white/60 border-b border-transparent'
+        } fixed top-0 left-0 right-0 mx-auto w-full md:w-11/12 lg:w-10/12 xl:w-9/12 rounded-b-2xl z-10 transition-all duration-300 ease-in-out`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          {/* Logo and Brand */}
-          <Link href="/">
-            <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-teal-50 to-blue-50 p-2 rounded-full">
-                <img
-                  src="logo.jpg" // Replace with the actual path to your logo
-                  alt="Upcheck Logo"
-                  className="h-10 w-10 rounded-full object-cover"
-                />
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
-                Upcheck
-              </span>
+        <div className="flex justify-between items-center h-16">
+          <Link href="/" className="flex items-center">
+            <div className="bg-transparent">
+              <Image
+                src="/Logo.svg"
+                alt="UpCheck Logo"
+                width={200}
+                height={60}
+                className="h-14 w-auto object-contain"
+                priority
+              />
             </div>
           </Link>
 
@@ -103,7 +100,7 @@ export default function Navbar() {
           <div className="hidden md:flex md:items-center md:space-x-6">
             {/* Explore Dropdown */}
             <div className="relative group">
-              <button className="flex items-center space-x-1 text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group-hover:text-teal-600">
+              <button className="flex items-center space-x-1 text-gray-600 hover:text-brand-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group-hover:text-brand-dark">
                 <span>Explore</span>
                 <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
@@ -113,7 +110,7 @@ export default function Navbar() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 transition-colors duration-200"
+                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-dark transition-colors duration-200"
                       role="menuitem"
                     >
                       {item.name}
@@ -125,7 +122,7 @@ export default function Navbar() {
 
             {/* Participate Dropdown */}
             <div className="relative group">
-              <button className="flex items-center space-x-1 text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group-hover:text-teal-600">
+              <button className="flex items-center space-x-1 text-gray-600 hover:text-brand-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group-hover:text-brand-dark">
                 <span>Participate</span>
                 <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
@@ -135,7 +132,7 @@ export default function Navbar() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 transition-colors duration-200"
+                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-dark transition-colors duration-200"
                       role="menuitem"
                     >
                       {item.name}
@@ -150,7 +147,7 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="text-gray-600 hover:text-brand-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 {item.name}
               </a>
@@ -160,7 +157,7 @@ export default function Navbar() {
             <div className="relative" ref={langMenuRef}>
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="flex items-center space-x-2 text-gray-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="flex items-center space-x-2 text-gray-600 hover:text-brand-dark px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 <Globe className="h-5 w-5" />
                 <span>{languages.find((l) => l.code === language)?.name}</span>
@@ -175,7 +172,7 @@ export default function Navbar() {
                           setLanguage(lang.code)
                           setIsLangMenuOpen(false)
                         }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 transition-colors duration-200"
+                        className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-dark transition-colors duration-200"
                         role="menuitem"
                       >
                         {lang.name}
@@ -191,7 +188,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-teal-600 p-2 rounded-lg transition-colors duration-200"
+              className="text-gray-600 hover:text-brand-dark p-2 rounded-lg transition-colors duration-200"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -209,7 +206,7 @@ export default function Navbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                    className="block text-gray-600 hover:text-brand-dark hover:bg-gradient-to-r hover:from-brand-cyan/10 hover:to-brand-blue/10 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -224,7 +221,7 @@ export default function Navbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                    className="block text-gray-600 hover:text-brand-dark hover:bg-gradient-to-r hover:from-brand-cyan/10 hover:to-brand-blue/10 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -238,7 +235,7 @@ export default function Navbar() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                    className="block text-gray-600 hover:text-brand-dark hover:bg-gradient-to-r hover:from-brand-cyan/10 hover:to-brand-blue/10 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -259,7 +256,7 @@ export default function Navbar() {
                       setLanguage(lang.code)
                       setIsMenuOpen(false)
                     }}
-                    className="block w-full text-left text-gray-600 hover:text-teal-600 hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                    className="block w-full text-left text-gray-600 hover:text-brand-dark hover:bg-gradient-to-r hover:from-brand-cyan/10 hover:to-brand-blue/10 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                   >
                     {lang.name}
                   </button>

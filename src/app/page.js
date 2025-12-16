@@ -27,30 +27,30 @@ export default function Home() {
   const t = translations[language]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 to-blue-50">
-      <Analytics/>
+    <div className="min-h-screen bg-slate-50">
+      <Analytics />
       <Navbar />
       <NewsTicker translations={t.news} />
       <Hero translations={t.hero} />
       <Features translations={t.features} />
       <Pricing translations={t.pricing} />
       <Aichatsupport position={{ bottom: 20, right: 20 }} />
-      
+
       {/* Email Subscription iFrame */}
-      <div className="py-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">{t.subscribe_for_newsletter}</h2>
-        <iframe 
-          width="540" 
-          height="560" 
-          src="https://68756547.sibforms.com/serve/MUIFANRKDI17rBB29QoRH5RzszOLYqghOm6NsGyUOi3aoFgmUkWvvVAuKTDraEcLZnA0MPicpL-NWVM5toqczqfmmackgXsWechTJn7ggIqinSxYxQkw0TLx69FNb0glgE8PGItc-ZUk41ki7p6eLP_ZKUJbVjwrtw9kuUyTRgSuoedsCHFnnp_s3h7GC9ytIHTRiftbpKwfzzP3" 
-          frameBorder="0" 
-          scrolling="auto" 
-          allowFullScreen 
-          style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }} 
+      <div className="py-12 text-center bg-white border-t border-b border-slate-100">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-slate-800">{t.subscribe_for_newsletter}</h2>
+        <iframe
+          width="540"
+          height="560"
+          src="https://68756547.sibforms.com/serve/MUIFANRKDI17rBB29QoRH5RzszOLYqghOm6NsGyUOi3aoFgmUkWvvVAuKTDraEcLZnA0MPicpL-NWVM5toqczqfmmackgXsWechTJn7ggIqinSxYxQkw0TLx69FNb0glgE8PGItc-ZUk41ki7p6eLP_ZKUJbVjwrtw9kuUyTRgSuoedsCHFnnp_s3h7GC9ytIHTRiftbpKwfzzP3"
+          frameBorder="0"
+          scrolling="auto"
+          allowFullScreen
+          style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
         />
       </div>
 
-      <Footer translations={t.footer} />
+      <Footer />
 
       {/* Brevo Conversations Chat Widget */}
       {/*}<Script

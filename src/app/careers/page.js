@@ -3,11 +3,11 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Link from 'next/link'
-import { 
-  FaBriefcase, 
-  FaMapMarkerAlt, 
-  FaClock, 
-  FaFilter, 
+import {
+  FaBriefcase,
+  FaMapMarkerAlt,
+  FaClock,
+  FaFilter,
   FaSearch,
   FaGraduationCap,
   FaCalendarAlt,
@@ -162,16 +162,16 @@ export default function CareersPage() {
   // Filter jobs based on search, type and skills
   const filteredJobs = jobs.filter(job => {
     const searchLower = searchTerm.toLowerCase()
-    const matchesSearch = 
+    const matchesSearch =
       job.title.toLowerCase().includes(searchLower) ||
       job.description.toLowerCase().includes(searchLower) ||
       job.requirements.some(req => req.toLowerCase().includes(searchLower)) ||
       job.responsibilities.some(resp => resp.toLowerCase().includes(searchLower)) ||
       job.skills.some(skill => skill.toLowerCase().includes(searchLower))
-    
+
     const matchesType = selectedType === 'all' || job.type === selectedType
     const matchesSkill = selectedSkill === 'all' || job.skills.includes(selectedSkill)
-    
+
     return matchesSearch && matchesType && matchesSkill
   })
 
@@ -183,7 +183,7 @@ export default function CareersPage() {
   const internships = sortedJobs.filter(job => job.type === ROLE_TYPES.INTERNSHIP)
 
   const JobCard = ({ job }) => (
-    <div 
+    <div
       className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full group relative"
     >
       <div className="p-6 flex flex-col h-full">
@@ -242,7 +242,7 @@ export default function CareersPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {job.skills.map((skill, index) => (
-              <span 
+              <span
                 key={index}
                 className="px-2 py-1 bg-teal-50 text-teal-600 rounded-full text-xs font-medium"
               >
@@ -253,7 +253,7 @@ export default function CareersPage() {
         </div>
 
         {/* Apply Button - Fixed at bottom */}
-        <Link 
+        <Link
           href={job.formLink}
           className="inline-block w-full text-center bg-gradient-to-r from-teal-600 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-teal-700 hover:to-blue-700 transition-all duration-300"
         >
@@ -275,16 +275,16 @@ export default function CareersPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 to-blue-50">
+    <div className="min-h-screen bg-slate-50">
       <Navbar />
-      
+
       {/* Header Section */}
       <section className="pt-32 pb-16 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Join Our Mission
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Start your journey in aquaculture technology. Help us revolutionize shrimp farming while learning and growing with us.
           </p>
         </div>
@@ -294,22 +294,22 @@ export default function CareersPage() {
       <section className="pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Internship Notice */}
-          <div className="bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-200 rounded-xl p-6 mb-8">
+          <div className="bg-white border border-blue-100 rounded-xl p-6 mb-8 shadow-sm">
             <div className="flex items-start space-x-3">
               <FaGraduationCap className="text-blue-600 text-xl mt-1" />
               <div>
-                <h3 className="text-xl font-semibold text-blue-800 mb-2">About Our Internships</h3>
-                <div className="space-y-2 text-blue-600">
+                <h3 className="text-xl font-semibold text-blue-900 mb-2">About Our Internships</h3>
+                <div className="space-y-2 text-slate-600">
                   <p className="flex items-center">
-                    <FaCalendarAlt className="mr-2" />
+                    <FaCalendarAlt className="mr-2 text-blue-500" />
                     Duration: 1-3 months (Flexible & Extendable)
                   </p>
                   <p className="flex items-center">
-                    <FaMapMarkerAlt className="mr-2" />
+                    <FaMapMarkerAlt className="mr-2 text-blue-500" />
                     Fully Remote Position
                   </p>
                   <p className="flex items-center">
-                    <FaBriefcase className="mr-2" />
+                    <FaBriefcase className="mr-2 text-blue-500" />
                     Potential for Full-time Conversion
                   </p>
                 </div>
@@ -318,7 +318,7 @@ export default function CareersPage() {
           </div>
 
           {/* Search and Filter Controls */}
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+          <div className="bg-white rounded-xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.1)] p-6 mb-8 border border-slate-100">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Search Input */}
               <div className="relative">
@@ -327,9 +327,9 @@ export default function CareersPage() {
                   placeholder="Search positions, skills, or requirements..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-slate-50 text-slate-900 placeholder-slate-400"
                 />
-                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               </div>
 
               {/* Type Filter */}
@@ -337,14 +337,14 @@ export default function CareersPage() {
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent appearance-none"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent appearance-none bg-slate-50 text-slate-900"
                 >
                   <option value="all">All Types</option>
                   {Object.values(ROLE_TYPES).map(type => (
                     <option key={type} value={type}>{type}</option>
                   ))}
                 </select>
-                <FaBriefcase className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <FaBriefcase className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               </div>
 
               {/* Skills Filter */}
@@ -352,14 +352,14 @@ export default function CareersPage() {
                 <select
                   value={selectedSkill}
                   onChange={(e) => setSelectedSkill(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent appearance-none"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent appearance-none bg-slate-50 text-slate-900"
                 >
                   <option value="all">All Skills</option>
                   {allSkills.map(skill => (
                     <option key={skill} value={skill}>{skill}</option>
                   ))}
                 </select>
-                <FaTags className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <FaTags className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               </div>
 
               {/* Sort Options */}
@@ -367,20 +367,20 @@ export default function CareersPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent appearance-none"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent appearance-none bg-slate-50 text-slate-900"
                 >
                   <option value="newest">Newest First</option>
                   <option value="oldest">Oldest First</option>
                   <option value="title">Title (A-Z)</option>
                 </select>
-                <FaFilter className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <FaFilter className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               </div>
             </div>
           </div>
 
           {/* Full-time Positions Section */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Full-time Positions</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">Full-time Positions</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {fullTimeJobs.length > 0 ? (
                 fullTimeJobs.map(job => <JobCard key={job.id} job={job} />)
@@ -392,7 +392,7 @@ export default function CareersPage() {
 
           {/* Internship Positions Section */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Internship Positions</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">Internship Positions</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {internships.length > 0 ? (
                 internships.map(job => <JobCard key={job.id} job={job} />)
@@ -404,10 +404,10 @@ export default function CareersPage() {
 
           {/* No Results Message */}
           {sortedJobs.length === 0 && searchTerm && (
-            <div className="text-center py-12 bg-white rounded-xl shadow-lg">
-              <FaSearch className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No Positions Found</h3>
-              <p className="text-gray-600">
+            <div className="text-center py-12 bg-white rounded-xl shadow-lg border border-slate-100">
+              <FaSearch className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">No Positions Found</h3>
+              <p className="text-slate-600">
                 We couldn't find any positions matching your search criteria.
                 Try adjusting your search terms or filters.
               </p>

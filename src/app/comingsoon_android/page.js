@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import {
-    Code,
-  Terminal, 
-  Smartphone, 
+  Code,
+  Terminal,
+  Smartphone,
   Clock,
   Share2,
   ChevronRight,
@@ -77,101 +77,101 @@ export default function AndroidComingSoon({ translations }) {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teal-50 to-green-50">
+    <div className="min-h-screen bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
-            <div className="rounded-full bg-green-100 p-6">
-              <FaAndroid className="w-16 h-16 text-green-600" />
+            <div className="rounded-full bg-white p-6 shadow-sm border border-slate-100">
+              <FaAndroid className="w-16 h-16 text-teal-600" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+          <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl mb-4">
             Stay tuned
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             We're putting the finishing touches on your ultimate shrimp farming companion
           </p>
         </div>
 
         {/* Development Progress */}
         <div className="max-w-3xl mx-auto mb-20">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-semibold mb-6">Development Progress</h3>
+          <div className="bg-white rounded-xl shadow-[0_4px_20px_-2px_rgba(0,0,0,0.1)] p-8 border border-slate-100">
+            <h3 className="text-2xl font-semibold mb-6 text-slate-900">Development Progress</h3>
             <div className="space-y-4">
               {[
-    { task: "Core Features", progress: 85 },
-    { task: "UI Development", progress: 90 },
-    { task: "API Integration", progress: 100 },
-    { task: "User Authentication", progress: 90 },
-    { task: "User Profile Management", progress: 65 },
-    { task: "Localization/Translations", progress: 75 },
-    { task: "Notifications & Alerts", progress: 20 },
-    { task: "Performance Optimization", progress: 15 },
-    { task: "Testing Phase", progress: 5 },
-]
-.map((item) => (
-                <div key={item.task}>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-gray-600">{item.task}</span>
-                    <span className="text-green-600 font-medium">{item.progress}%</span>
+                { task: "Core Features", progress: 85 },
+                { task: "UI Development", progress: 90 },
+                { task: "API Integration", progress: 100 },
+                { task: "User Authentication", progress: 90 },
+                { task: "User Profile Management", progress: 65 },
+                { task: "Localization/Translations", progress: 75 },
+                { task: "Notifications & Alerts", progress: 20 },
+                { task: "Performance Optimization", progress: 15 },
+                { task: "Testing Phase", progress: 5 },
+              ]
+                .map((item) => (
+                  <div key={item.task}>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-slate-600">{item.task}</span>
+                      <span className="text-teal-600 font-medium">{item.progress}%</span>
+                    </div>
+                    <div className="w-full bg-slate-100 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-blue-900 to-teal-500 rounded-full h-2 transition-all duration-500 shadow-sm"
+                        style={{ width: `${item.progress}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-green-500 rounded-full h-2 transition-all duration-500"
-                      style={{ width: `${item.progress}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
-        
+
         {/* Countdown Section */}
         <div className="flex flex-col justify-center">
-            <h2 className="text-2xl font-semibold text-center mb-6">
-              Launching In
-            </h2>
-            <CountdownTimer targetDate="2025-05-01T00:00:00" />
-            <p className="text-center mt-6 text-gray-600">
-              Expected launch date: May 01, 2025
-            </p>
-          </div>
+          <h2 className="text-2xl font-semibold text-center mb-6 text-slate-900">
+            Launching In
+          </h2>
+          <CountdownTimer targetDate="2025-05-01T00:00:00" />
+          <p className="text-center mt-6 text-slate-500">
+            Expected launch date: May 01, 2025
+          </p>
+        </div>
 
         {/* Features Grid */}
         <div className="flex flex-col justify-center mt-20">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-              These are being brewed
-            </h2>  
+          <h2 className="text-2xl font-semibold text-center mb-6 text-slate-900">
+            These are being brewed
+          </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 mt-5">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300"
+              className="bg-white rounded-xl shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] p-6 transform hover:-translate-y-1 transition-all duration-300 border border-slate-100"
             >
-              <div className={`${feature.bgColor} rounded-lg p-4 inline-block mb-4`}>
-                <feature.icon className={`w-6 h-6 ${feature.color}`} />
+              <div className={`${feature.bgColor.replace('green', 'teal').replace('blue', 'blue').replace('purple', 'indigo')} rounded-lg p-4 inline-block mb-4`}>
+                <feature.icon className={`w-6 h-6 ${feature.color.replace('green', 'teal').replace('blue', 'blue').replace('purple', 'indigo')}`} />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-slate-900">{feature.title}</h3>
+              <p className="text-slate-600">{feature.description}</p>
             </div>
           ))}
         </div>
 
         {/* Notification Form */}
-      <div className="py-12 text-center">
-        <iframe 
-          width="540" 
-          height="560" 
-          src="https://68756547.sibforms.com/serve/MUIFAIcfwN_H5hK0uFpuDWeDae-jo6m127PCVI3M4DRT9Gc82j_hHu-yjKfEPxCuPTeNoUUj6NWGGK3JUGmWtNsTRzVvEtzRSHI1JAmR29O0ycues8yDQQS3tslR-TOU5e9ROMRG-GYhh6XJ7iEb_qTOpo-ZgLmrNnywteFhEAlRYh4zgaDqJzVQomGncTrwNBY1R143vY5U50hv" 
-          frameBorder="0" 
-          scrolling="auto" 
-          allowFullScreen 
-          style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }} 
-        />
-      </div>
+        <div className="py-12 text-center bg-white rounded-xl border border-slate-100 shadow-sm">
+          <iframe
+            width="540"
+            height="560"
+            src="https://68756547.sibforms.com/serve/MUIFAIcfwN_H5hK0uFpuDWeDae-jo6m127PCVI3M4DRT9Gc82j_hHu-yjKfEPxCuPTeNoUUj6NWGGK3JUGmWtNsTRzVvEtzRSHI1JAmR29O0ycues8yDQQS3tslR-TOU5e9ROMRG-GYhh6XJ7iEb_qTOpo-ZgLmrNnywteFhEAlRYh4zgaDqJzVQomGncTrwNBY1R143vY5U50hv"
+            frameBorder="0"
+            scrolling="auto"
+            allowFullScreen
+            style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
+          />
+        </div>
       </div>
     </div>
   );

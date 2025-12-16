@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { 
-  Shield, 
+import {
+  Shield,
   Share2,
   ChevronRight,
   Command,
@@ -83,19 +83,19 @@ export default function IOSComingSoon() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 pt-8">
+    <div className="min-h-screen bg-slate-50 pt-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
-            <div className="rounded-full bg-blue-100 p-6">
-              <FaApple className="w-12 h-12 md:w-16 md:h-16 text-blue-600" />
+            <div className="rounded-full bg-white p-6 shadow-sm border border-slate-100">
+              <FaApple className="w-12 h-12 md:w-16 md:h-16 text-slate-800" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+          <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl mb-4">
             iOS App Coming Soon
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Experience the future of shrimp farming on your iPhone
           </p>
         </div>
@@ -103,28 +103,28 @@ export default function IOSComingSoon() {
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Phone Preview */}
           <div className="relative max-w-xs mx-auto md:max-w-sm">
-            <div className="bg-gray-900 rounded-[3rem] p-4 shadow-2xl">
+            <div className="bg-slate-900 rounded-[3rem] p-4 shadow-2xl">
               <div className="relative bg-black rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
                 {/* Notch */}
                 <div className="absolute top-0 w-full h-6 bg-black">
                   <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-black rounded-full" />
                 </div>
-                <div className="absolute inset-0 rounded-[2.5rem] border-4 border-gray-800" />
-                <div className="absolute inset-0 bg-blue-50/90 backdrop-blur-sm p-4">
+                <div className="absolute inset-0 rounded-[2.5rem] border-4 border-slate-800" />
+                <div className="absolute inset-0 bg-slate-50/90 backdrop-blur-sm p-4">
                   {/* Development Progress */}
                   <div className="space-y-3 mt-8">
-                    <h3 className="text-center text-sm font-semibold text-gray-800 mb-4">
+                    <h3 className="text-center text-sm font-semibold text-slate-800 mb-4">
                       Development Progress
                     </h3>
                     {progressSteps.map((item) => (
                       <div key={item.task} className="text-xs">
                         <div className="flex justify-between mb-1">
-                          <span className="text-gray-600">{item.task}</span>
-                          <span className="text-blue-600 font-medium">{item.progress}%</span>
+                          <span className="text-slate-600">{item.task}</span>
+                          <span className="text-teal-600 font-medium">{item.progress}%</span>
                         </div>
                         <div className="w-full bg-white/50 rounded-full h-1.5 backdrop-blur-sm">
-                          <div 
-                            className="bg-blue-500 rounded-full h-1.5 transition-all duration-500"
+                          <div
+                            className="bg-gradient-to-r from-blue-900 to-teal-500 rounded-full h-1.5 transition-all duration-500"
                             style={{ width: `${item.progress}%` }}
                           />
                         </div>
@@ -134,7 +134,7 @@ export default function IOSComingSoon() {
 
                   {/* Home Indicator */}
                   <div className="absolute bottom-4 left-4 right-4">
-                    <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto" />
+                    <div className="w-12 h-1 bg-slate-300 rounded-full mx-auto" />
                   </div>
                 </div>
               </div>
@@ -143,11 +143,11 @@ export default function IOSComingSoon() {
 
           {/* Countdown Section */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-2xl font-semibold text-center mb-6">
+            <h2 className="text-2xl font-semibold text-center mb-6 text-slate-900">
               Launching In
             </h2>
             <CountdownTimer targetDate="2025-07-20T00:00:00" />
-            <p className="text-center mt-6 text-gray-600">
+            <p className="text-center mt-6 text-slate-600">
               Expected launch date: July 20, 2025
             </p>
           </div>
@@ -156,31 +156,31 @@ export default function IOSComingSoon() {
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300"
+              className="bg-white rounded-2xl shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] p-6 transform hover:-translate-y-1 transition-all duration-300 border border-slate-100"
             >
-              <div className={`${feature.bgColor} rounded-xl p-4 inline-block mb-4`}>
-                <feature.icon className={`w-6 h-6 ${feature.color}`} />
+              <div className={`${feature.bgColor.replace('blue', 'indigo')} rounded-xl p-4 inline-block mb-4`}>
+                <feature.icon className={`w-6 h-6 ${feature.color.replace('blue', 'indigo')}`} />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-slate-900">{feature.title}</h3>
+              <p className="text-slate-600">{feature.description}</p>
             </div>
           ))}
         </div>
 
         {/* Notification Form */}
-      <div className="py-12 text-center">
-        <iframe 
-          width="540" 
-          height="560" 
-          src="https://68756547.sibforms.com/serve/MUIFAIcfwN_H5hK0uFpuDWeDae-jo6m127PCVI3M4DRT9Gc82j_hHu-yjKfEPxCuPTeNoUUj6NWGGK3JUGmWtNsTRzVvEtzRSHI1JAmR29O0ycues8yDQQS3tslR-TOU5e9ROMRG-GYhh6XJ7iEb_qTOpo-ZgLmrNnywteFhEAlRYh4zgaDqJzVQomGncTrwNBY1R143vY5U50hv" 
-          frameBorder="0" 
-          scrolling="auto" 
-          allowFullScreen 
-          style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }} 
-        />
-      </div>
+        <div className="py-12 text-center bg-white rounded-xl border border-slate-100 shadow-sm">
+          <iframe
+            width="540"
+            height="560"
+            src="https://68756547.sibforms.com/serve/MUIFAIcfwN_H5hK0uFpuDWeDae-jo6m127PCVI3M4DRT9Gc82j_hHu-yjKfEPxCuPTeNoUUj6NWGGK3JUGmWtNsTRzVvEtzRSHI1JAmR29O0ycues8yDQQS3tslR-TOU5e9ROMRG-GYhh6XJ7iEb_qTOpo-ZgLmrNnywteFhEAlRYh4zgaDqJzVQomGncTrwNBY1R143vY5U50hv"
+            frameBorder="0"
+            scrolling="auto"
+            allowFullScreen
+            style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', maxWidth: '100%' }}
+          />
+        </div>
       </div>
     </div>
   );

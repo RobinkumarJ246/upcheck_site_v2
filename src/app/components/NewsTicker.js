@@ -13,10 +13,10 @@ export default function NewsTicker({ translations }) {
   }, [translations.items.length]);
 
   return (
-    <div className="bg-teal-600 text-white py-2 relative overflow-hidden" style={{ marginTop: '80px' }}>
+    <div className="bg-gradient-to-r from-brand-blue to-brand-cyan text-white py-2 relative overflow-hidden" style={{ marginTop: '80px' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center space-x-4">
-          <span className="text-sm font-medium bg-white text-teal-600 px-3 py-1 rounded-full">
+          <span className="text-sm font-medium bg-white text-brand-dark px-3 py-1 rounded-full">
             {translations.title}
           </span>
           <div className="relative flex-1 overflow-hidden">

@@ -2,16 +2,16 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export function Pagination({ 
-  totalItems, 
-  currentPage, 
-  itemsPerPage, 
-  onPageChange, 
-  onItemsPerPageChange 
+export function Pagination({
+  totalItems,
+  currentPage,
+  itemsPerPage,
+  onPageChange,
+  onItemsPerPageChange
 }) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const pageNumbers = [];
-  
+
   // Generate page numbers with ellipsis
   const generatePageNumbers = () => {
     if (totalPages <= 5) {
@@ -52,7 +52,7 @@ export function Pagination({
         <select
           value={itemsPerPage}
           onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-          className="px-3 py-1 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+          className="px-3 py-1 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-cyan"
         >
           <option value={5}>5</option>
           <option value={10}>10</option>
@@ -74,10 +74,10 @@ export function Pagination({
             key={index}
             onClick={() => typeof number === 'number' && onPageChange(number)}
             className={`px-3 py-1 rounded-lg text-sm font-medium
-              ${number === currentPage 
-                ? 'bg-teal-600 text-white' 
-                : number === '...' 
-                  ? 'cursor-default' 
+              ${number === currentPage
+                ? 'bg-brand-dark text-white'
+                : number === '...'
+                  ? 'cursor-default'
                   : 'hover:bg-gray-100'
               }`}
           >
