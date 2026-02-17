@@ -88,10 +88,25 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-300 mt-8 pt-4 text-center">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} {t.rights}
-          </p>
+        <div className="border-t border-gray-300 mt-8 pt-4">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-sm text-center md:text-left">
+              &copy; {new Date().getFullYear()} {t.rights}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <Link href="/privacy" className="text-slate-600 hover:text-brand-cyan transition-colors duration-200">
+                Privacy Policy
+              </Link>
+              <span className="text-slate-400">|</span>
+              <Link href="/terms" className="text-slate-600 hover:text-brand-cyan transition-colors duration-200">
+                Terms of Service
+              </Link>
+              <span className="text-slate-400">|</span>
+              <Link href="/cookies" className="text-slate-600 hover:text-brand-cyan transition-colors duration-200">
+                Cookies Policy
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
