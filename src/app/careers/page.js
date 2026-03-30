@@ -45,6 +45,11 @@ export default function CareersPage() {
       text: 'Limited positions',
       icon: FaUserClock,
       className: 'bg-yellow-100 text-yellow-600'
+    },
+    CLOSED: {
+      text: 'Closed',
+      icon: FaBriefcase,
+      className: 'bg-gray-100 text-gray-600'
     }
   }
 
@@ -87,7 +92,7 @@ export default function CareersPage() {
       ],
       skills: ['Electronics', 'IoT', 'PCB Design'],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdbB3VKuGnCoWRaS83x8hp9Hb6Vs7TRz4k_YKoVXhULHBu7TQ/viewform?usp=header",
-      badge: BADGE_TYPES.NEW
+      badge: BADGE_TYPES.CLOSED
     },
     {
       id: 2,
@@ -113,7 +118,7 @@ export default function CareersPage() {
       ],
       skills: ['JavaScript', 'React Native', 'Mobile Development'],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdbB3VKuGnCoWRaS83x8hp9Hb6Vs7TRz4k_YKoVXhULHBu7TQ/viewform?usp=header",
-      badge: BADGE_TYPES.NEW
+      badge: BADGE_TYPES.CLOSED
     },
     {
       id: 3,
@@ -139,7 +144,7 @@ export default function CareersPage() {
       ],
       skills: ['C/C++', 'Embedded Systems', 'Microcontrollers'],
       formLink: "https://docs.google.com/forms/d/e/1FAIpQLSdbB3VKuGnCoWRaS83x8hp9Hb6Vs7TRz4k_YKoVXhULHBu7TQ/viewform?usp=header",
-      badge: BADGE_TYPES.NEW
+      badge: BADGE_TYPES.CLOSED
     }
   ]
 
